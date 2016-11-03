@@ -7,12 +7,15 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class DemoControleurPersonneTest extends TestCase
 {
     /**
-     * A basic test example.
      *
-     * @return void
+     * @test
      */
-    public function testExample()
+    public function les_routes_CRUD_existent()
     {
-        $this->assertTrue(true);
+        $this->visit("/personnes"); //index
+        $this->visit("/personnes/create"); //create
+        $this->visit("/personnes/edit"); //update
+        $this->visit("/personnes/show"); //read
+        
     }
 }
