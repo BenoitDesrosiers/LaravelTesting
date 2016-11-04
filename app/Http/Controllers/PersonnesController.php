@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use View;
+use App\Personne;
 
 class PersonnesController extends Controller
 {
     public function index()
     {
-    	return View::make('personnes.index');
+    	$personnes = Personne::all();
+    	return View::make('personnes.index', compact('personnes'));
     }
 
     public function create()
