@@ -8,6 +8,13 @@ use DateTime;
 
 class Personne extends Model
 {
+	
+	/**
+	 * les attributs qui sont "mass assignable"
+	 */
+	
+	protected $fillable = ['nom', 'dateNaissance', 'telephone'];
+	
     /*
      * converti une date du format yy-mm-dd à yy-mm-dd. 
      * Si yy > 69 ajoute 1900, sinon ajoute 2000 (suit le format y de Datetime::createFromFormat

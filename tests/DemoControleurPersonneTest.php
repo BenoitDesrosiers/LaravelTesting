@@ -20,6 +20,12 @@ class DemoControleurPersonneTest extends TestCase
         
     }
     
+    
+    /*
+     * tests des paramètres de sortie de la view Index
+     * 
+     */
+    
     /**
      * @test
      */
@@ -46,4 +52,63 @@ class DemoControleurPersonneTest extends TestCase
     	$this->assertEquals(count($lesPersonnes), $personnes->count());
     }
     
+    /*
+     *  tests des paramètres d'entrée de la view store pour une personne
+     *  
+     */
+    
+    /**
+     * @test
+     */
+    public function le_ctrl_retourne_errors_avec_une_personne_sans_nom()
+    {
+    	$this->call('POST', '/personnes');
+    	$this->assertSessionHasErrors(['nom']);
+    }
+
+    /**
+     * @test
+     */
+    public function le_ctrl_retourne_errors_avec_une_personne_sans_dateNaissance()
+    {
+    	$this->call('POST', '/personnes');
+    	$this->assertSessionHasErrors(['dateNaissance']);
+    }
+    
+    /**
+     * @test
+     */
+    public function le_ctrl_permet_la_creation_d_une_personne_valide()
+    {
+    	$personne_valide = factory(App\Personne::class)->make();
+    	$input = ['nom'=>$personne_valide->nom, 'dateNaissance'=>$personne_valide->dateNaissance];
+    	$this->call('POST', '/personnes', $input);    	 
+    	$this->assertSessionMissing(['errors']);
+    }
+    
+    /*
+     *  tests de la sauvegarde d'une personne par le store
+     */
+    
+    /**
+     * @test
+     */
+    public function le_ctrl_permet_la_sauvegarde_d_une_personne_valide()
+    {
+    	$personne_valide = factory(App\Personne::class)->make();
+    	$input = ['nom'=>$personne_valide->nom, 
+    			  'dateNaissance'=>$personne_valide->dateNaissance, 
+    			  'telephone' => $personne_valide->telephone];
+    	$this->call('POST', '/personnes', $input);
+    	$this->assertSessionMissing(['errors']);
+    	$this->seeInDatabase('personnes', ['nom' => $personne_valide->nom, 
+    									   'dateNaissance' => $personne_valide->dateNaissance,
+    									   'telephone' => $personne_valide->telephone]);
+    	
+    }
+ 
 }
+
+
+
+

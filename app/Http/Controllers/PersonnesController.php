@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use View;
 use App\Personne;
+use App\Http\Requests\PersonneStoreRequest;
 
 class PersonnesController extends Controller
 {
@@ -19,8 +20,11 @@ class PersonnesController extends Controller
     	return View::make('personnes.create');
     }
 
-    public function store(Request $request)
+    public function store(PersonneStoreRequest $request)
     {
+    	dd($request->all());
+    	$personne = Personne::create($request->all());
+    	dd($personne);
     }
  
     public function show($id)
