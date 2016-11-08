@@ -22,9 +22,7 @@ class PersonnesController extends Controller
 
     public function store(PersonneStoreRequest $request)
     {
-    	dd($request->all());
     	$personne = Personne::create($request->all());
-    	dd($personne);
     }
  
     public function show($id)
