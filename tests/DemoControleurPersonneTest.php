@@ -10,6 +10,8 @@ class DemoControleurPersonneTest extends TestCase
     /**
      *
      * @test
+     * 
+     * rqt-4 CRUD des personnes
      */
     public function les_routes_CRUD_existent()
     {
@@ -28,6 +30,10 @@ class DemoControleurPersonneTest extends TestCase
     
     /**
      * @test
+     * 
+     * rqt-4 CRUD des personnes 
+     * il y aurait normalement une entré dans le dictionnaire indiquant
+     * les champs à mettre sur l'index. 
      */
     public function le_ctrl_envoie_les_personnes_a_la_view()
     {
@@ -38,6 +44,10 @@ class DemoControleurPersonneTest extends TestCase
     
     /**
      * @test
+     * 
+     * rqt-4 CRUD des personnes. 
+     * il pourrait y avoir une exigence indiquant le nombre d'entrées
+     * à mettre par page. 
      */
     public function le_ctrl_envoie_toutes_les_personnes_a_la_view()
     {
@@ -59,6 +69,8 @@ class DemoControleurPersonneTest extends TestCase
     
     /**
      * @test
+     * 
+     * rqt-4 CRUD des personnes + dictionnaire nom obligatoire. 
      */
     public function le_ctrl_retourne_errors_avec_une_personne_sans_nom()
     {
@@ -68,6 +80,9 @@ class DemoControleurPersonneTest extends TestCase
 
     /**
      * @test
+     * 
+     * rqt-4 CRUD des personnes + dictionnaire date naissance obligatoire 
+     * (il faudrait ajouter un test sur le format de la date de naissance)
      */
     public function le_ctrl_retourne_errors_avec_une_personne_sans_dateNaissance()
     {
@@ -77,6 +92,8 @@ class DemoControleurPersonneTest extends TestCase
     
     /**
      * @test
+     * 
+     * rqt-4 CRUD des personnes
      */
     public function le_ctrl_permet_la_creation_d_une_personne_valide()
     {
@@ -92,6 +109,8 @@ class DemoControleurPersonneTest extends TestCase
     
     /**
      * @test
+     * 
+     * rqt-6 sauvegarde des personnes dans la bd. 
      */
     public function le_ctrl_permet_la_sauvegarde_d_une_personne_valide()
     {
